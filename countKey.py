@@ -44,16 +44,44 @@ def CountKey(dir,rank):
                 #continue
         print("total num: {0}".format(len(word_list)))
 
+        # rank2进阶要求：输出有几组switch case结构，同时输出每组对应的case个数
+        def rank_2():
+            i = 0
+            switch_num = 0  # 记录switch的数量
+            for word in lis:
+                if word == "switch":
+                    switch_num += 1
+                    switch_index.append(i)  # 记录switch的下标值
+                i += 1
+            print("switch num: {0}".format(switch_num))
+
+            for i in range(len(switch_index)):
+                case = 0
+                if i != len(switch_index) - 1:
+                    for j in range(switch_index[i], switch_index[i + 1]):
+                        if (lis[j] == 'case'):
+                            case += 1
+                    case_num.append(case)
+                if i == len(switch_index) - 1:
+                    for j in range(switch_index[len(switch_index) - 1], len(lis)):
+                        if (lis[j] == 'case'):
+                            case += 1
+                    case_num.append(case)
+            print("case num: {0}".format(case_num))
 
     if rank==1:
         rank_1()
+
+    if rank==2:
+        rank_1()
+        rank_2()
 
 
 
 if __name__ == '__main__':
     start_time = time.time()
     basedir=r"C:\Users\MAC\Desktop\test.cpp"
-    CountKey(basedir,1)
+    CountKey(basedir,2)
     # time.sleep(1)
     # print(time.time()-start_time)
     
