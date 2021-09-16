@@ -82,6 +82,7 @@ if __name__ == '__main__':
     start_time = time.time()
     basedir=r"C:\Users\MAC\Desktop\test.cpp"
     CountKey(basedir,2)
+    
     # time.sleep(1)
     # print(time.time()-start_time)
     
