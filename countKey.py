@@ -69,6 +69,22 @@ def CountKey(dir,rank):
                     case_num.append(case)
             print("case num: {0}".format(case_num))
 
+        # rank3:拔高要求：输出有几组if else结构
+        def rank_3():
+            if_else_num = 0  # 记录if else的数量
+            for word in lis:
+                if word == "if" or word == "else":
+                    if_else.append(word)
+            print(if_else)
+            for i in range(len(if_else)):
+                if i != len(if_else) - 2 and i != len(if_else) - 1:  # 排除if_else列表的最后两个元素，否则可能越界
+                    if if_else[i] == "if" and if_else[i + 1] == "else" and if_else[i + 1] != "if":
+                        if_else[i] = ""
+                        if_else[i + 1] = ""
+                        if_else_num += 1
+            print(if_else)
+            print(if_else_num)
+
     if rank==1:
         rank_1()
 
@@ -76,12 +92,17 @@ def CountKey(dir,rank):
         rank_1()
         rank_2()
 
+    if rank==3:
+        rank_1()
+        rank_2()
+        rank_3()
+
 
 
 if __name__ == '__main__':
     start_time = time.time()
     basedir=r"C:\Users\MAC\Desktop\test.cpp"
-    CountKey(basedir,2)
+    CountKey(basedir,3)
     
     # time.sleep(1)
     # print(time.time()-start_time)
