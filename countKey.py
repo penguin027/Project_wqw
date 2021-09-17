@@ -11,6 +11,28 @@ keyWords=["auto","break","case","char","const","continue","default","do",
 def removeNonLetter(str):
     return re.sub('[^a-zA-Z]',' ',str)
 
+#把代码文件内的注释部分以及print(）内的内容删除
+def remove(str):
+    index=0     #记录注释开始的位置
+    if(len(str)>=2):
+        for i in range(1,len(str)):     #去除注释部分
+            if str[i]=='/' and str[i-1]=='/':
+                index=i
+                break
+        str=str[:index-1]
+
+    index=0     #记录print开始的位置
+    if(len(str)>=5):
+        for i in range(0,len(str)-4):     #去掉print内的内容
+            if (str[i]=='p' and str[i+1]=='r' and str[i+2]=='i'
+                and str[i+3]=='n' and str[i+4]=='t'):
+                index=i
+                break
+            else:
+                index=-1
+        str=str[:index]
+    return str
+
 #把文件内的单词分割为列表
 def splitWord(dir):
     lis = []  # 存放所有的单词
