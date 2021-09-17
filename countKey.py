@@ -85,6 +85,29 @@ def CountKey(dir,rank):
             print(if_else)
             print(if_else_num)
 
+        #rank4:终极要求：输出有几组if，else if，else结构
+        def rank_4():
+            ifelse = []  # 记录所有单个if，else的列表
+            if_elseif_else_num = 0  # 记录if-elseif-else的数量
+            for word in lis:
+                if word == "if" or word == "else":
+                    ifelse.append(word)  # 把所有的if else单独提取出来
+
+            if_else = merge_if_else(ifelse)  # 逐步进行合并 先配对if-else
+            if_elseif_else = merge_if_elseif_else(if_else)  # 再配对if-elseif-else
+
+            while ("if-elseif-else" in if_elseif_else):  # 统计if-elseif-else的数目
+                for i in range(len(if_elseif_else)):
+                    if if_elseif_else[i] == "if-elseif-else":
+                        if_elseif_else[i] = ""
+                        if_elseif_else_num += 1
+
+                if_elseif_else = delEmpty(if_elseif_else)  # 删除列表中的空值
+                if (len(if_elseif_else) != 0):
+                    if_else = merge_if_else(if_elseif_else)  # 再次进行合并
+                    if_elseif_else = merge_if_elseif_else(if_else)
+            print("if-elseif-else num: {0}".format(if_elseif_else_num))  # if-elseif-else的数目
+
     if rank==1:
         rank_1()
 
@@ -96,6 +119,12 @@ def CountKey(dir,rank):
         rank_1()
         rank_2()
         rank_3()
+
+    if rank==4:
+        rank_1()
+        rank_2()
+        rank_3()
+        rank_4()
 
 
 
