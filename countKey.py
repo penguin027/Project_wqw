@@ -132,9 +132,7 @@ if __name__ == '__main__':
     start_time = time.time()
     basedir,rank=input("请输入文件路径 完成等级:\n").split(" ")
     CountKey(basedir,int(rank))
-    
-    # time.sleep(1)
-    # print(time.time()-start_time)
+    print(time.time()-start_time)
     
 
 
