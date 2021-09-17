@@ -130,8 +130,8 @@ def CountKey(dir,rank):
 
 if __name__ == '__main__':
     start_time = time.time()
-    basedir=r"C:\Users\MAC\Desktop\test.cpp"
-    CountKey(basedir,3)
+    basedir,rank=input("请输入文件路径 完成等级:\n").split(" ")
+    CountKey(basedir,int(rank))
     
     # time.sleep(1)
     # print(time.time()-start_time)
